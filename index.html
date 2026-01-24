@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhik Konar | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #0f172a;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.85);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            color: var(--light);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #cbd5e1;
+        }
+        
+        .typewriter {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            min-height: 60px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Section Common Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--light);
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category h3 i {
+            margin-right: 10px;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .project-header {
+            padding: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-header h3 {
+            color: var(--light);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .project-body {
+            padding: 25px;
+        }
+        
+        .project-body ul {
+            list-style: none;
+            color: #cbd5e1;
+        }
+        
+        .project-body li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .project-body li:before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .tech-tag {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Training & Certifications */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 50px;
+        }
+        
+        .timeline-content {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content p {
+            color: #cbd5e1;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Achievement */
+        .achievement-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .achievement-card h3 {
+            color: var(--light);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .achievement-card p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .leetcode-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Education */
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .education-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .education-card .institution {
+            color: var(--light);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .education-card .duration {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .education-card .grade {
+            color: var(--success);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            color: var(--light);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #cbd5e1;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-detail i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .contact-form {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--light);
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:before {
+                left: 23px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: rgba(15, 23, 42, 0.95);
+                width: 80%;
+                height: calc(100vh - 70px);
+                padding: 40px;
+                transition: right 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .typewriter {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Success/Error Messages */
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+        
+        .error {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                <img src="Abhi1.jpg" style="height: 100px; width:100px; border-radius: 50%;">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#training">Training</a></li>
+                    <li><a href="#achievement">Achievement</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Hi, I'm <span>Abhik Konar</span></h1>
+                <div class="typewriter" id="typewriter"></div>
+                <p>Computer Science Engineer | Data Science Enthusiast | Problem Solver</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/abhik-konar34/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/abhikkonar05" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:abhikkonar34@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/abhik_2005/" class="social-link" target="_blank">
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+                
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C</span>
+                        <span class="skill-item">SQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">Scikit-learn</span>
+                        <span class="skill-item">Hadoop</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">AWS</span>
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Excel</span>
+                        <span class="skill-item">Git</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Problem-Solving</span>
+                        <span class="skill-item">Team Player</span>
+                        <span class="skill-item">Project Management</span>
+                        <span class="skill-item">Adaptability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My <span>Projects</span></h2>
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Customer Loyalty History - Analysis Dashboard</h3>
+                        <div class="project-date">April 2025</div>
+                    </div>
+                    <div class="project-body">
+                        <ul>
+                            <li>Built this project to study retention and churn behavior through structured data exploration</li>
+                            <li>Utilized NumPy and pandas for efficient data cleaning, preprocessing and transformation</li>
+                            <li>Created insightful visualization with Matplotlib and Seaborn to highlight loyalty patterns</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Expense Mate - Smart Expense Splitter Using Java GUI</h3>
+                        <div class="project-date">July 2025</div>
+                    </div>
+                    <div class="project-body">
+                        <ul>
+                            <li>Made an Expense splitter to simplify group expense management with an efficient way</li>
+                            <li>Used OOP concepts to implement calculation, balance updates and splitting logic</li>
+                            <li>Designed a simple GUI to track and display shared costs in an organized manner</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Java Swing</span>
+                            <span class="tech-tag">OOP</span>
+                            <span class="tech-tag">GUI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Swiggy Rider Information - Analysis Dashboard</h3>
+                        <div class="project-date">April 2025</div>
+                    </div>
+                    <div class="project-body">
+                        <ul>
+                            <li>Analyzed rider performance and delivery patterns to identify key operational trends</li>
+                            <li>Cleaned and Preprocessed rider datasets to ensure accurate and reliable analysis</li>
+                            <li>Visualized delivery trends using charts and graphs to highlight improvement areas</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Excel</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Training & Certifications -->
+    <section id="training">
+        <div class="container">
+            <h2 class="section-title">Training & <span>Certifications</span></h2>
+            
+            <div class="timeline">
+                <!-- Certification 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Oracle Cloud Infrastructure 2025 Certified Data Science Professional</h3>
+                        <div class="date">Oracle | October 2025</div>
+                        <p>Certified professional in Oracle Cloud Infrastructure with focus on Data Science applications</p>
+                        <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=5A3E01399AD2F9AD50191C45A29B6D2C3644F389419194B7AC325D261357C74D" target="_blank" class="btn" style="margin-top: 15px; padding: 10px 20px;">View Certificate</a>
+                    </div>
+                </div>
+                
+                <!-- Training 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Fundamentals of Data Structures: Learn, Apply and Build Project</h3>
+                        <div class="date">June 2025 - July 2025</div>
+                        <p>Developed a Java Swing-based Smart Expense Splitter with OOP design and interactive GUI. Implemented CSV-based file handling using Java I/O for saving and loading expense records. Used ArrayList and HashMap to build accurate and dynamic expense calculation logic.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Data Structures</span>
+                            <span class="tech-tag">Java Swing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Introduction to Generative AI</h3>
+                        <div class="date">Coursera | February 2024</div>
+                        <p>Comprehensive introduction to Generative AI concepts, models and applications</p>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/AQ62F6VKPYS8" target="_blank" class="btn" style="margin-top: 15px; padding: 10px 20px;">View Certificate</a>
+                    </div>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Get Started with Python</h3>
+                        <div class="date">Coursera | January 2024</div>
+                        <p>Fundamental Python programming course covering syntax, data structures, and basic algorithms</p>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/TG9JXGJLT9L2" target="_blank" class="btn" style="margin-top: 15px; padding: 10px 20px;">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievement -->
+    <section id="achievement">
+        <div class="container">
+            <h2 class="section-title">My <span>Achievement</span></h2>
+            <div class="achievement-card fade-in">
+                <h3>Secured Global Rank 500,000</h3>
+                <p>Solved over 250+ problems on LeetCode with consistent practice and improvement in problem-solving skills</p>
+                <a href="https://leetcode.com/u/abhik_2005/" target="_blank" class="btn">View LeetCode Profile</a>
+                
+                <div class="leetcode-stats">
+                    <div class="stat">
+                        <div class="stat-value">250+</div>
+                        <div class="stat-label">Problems Solved</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">500K</div>
+                        <div class="stat-label">Global Rank</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Nov 2025</div>
+                        <div class="stat-label">Achievement Date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <div class="education-container">
+                <div class="education-card fade-in">
+                    <h3>Bachelor of Technology</h3>
+                    <div class="institution">Lovely Professional University, Punjab, India</div>
+                    <div class="duration">August 2023 - Present</div>
+                    <div class="grade">CGPA: 7.0</div>
+                    <p>Computer Science and Engineering</p>
+                </div>
+                
+                <div class="education-card fade-in">
+                    <h3>Intermediate (12th Grade)</h3>
+                    <div class="institution">Kanksa High School, Panagarh Bazar, Bardhaman</div>
+                    <div class="duration">April 2021 - March 2023</div>
+                    <div class="grade">Percentage: 78%</div>
+                </div>
+                
+                <div class="education-card fade-in">
+                    <h3>Matriculation (10th Grade)</h3>
+                    <div class="institution">Ramkrishna Ashrama Vidyapitha, Panagarh Bazar, Bardhaman</div>
+                    <div class="duration">April 2019 - March 2021</div>
+                    <div class="grade">Percentage: 95%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new opportunities, interesting projects, or just having a friendly chat about technology and innovation.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 9064664560</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>abhikkonar34@gmail.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/abhik-konar34</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/abhikkonar05</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Punjab, India</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <div id="success-message" class="message success" style="display: none;">
+                        Thank you for your message! I'll get back to you soon.
+                    </div>
+                    <div id="error-message" class="message error" style="display: none;">
+                        There was an error sending your message. Please try again or email me directly.
+                    </div>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 MAG. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/abhik-konar34/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/abhikkonar05" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:abhikkonar34@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/abhik_2005/" class="social-link" target="_blank">
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#2563eb" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#2563eb",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter');
+        const texts = [
+            "Data Science Enthusiast",
+            "Problem Solver",
+            "Java Developer",
+            "Python Programmer",
+            "AI/ML Learner"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.innerHTML = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.innerHTML = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                setTimeout(typeWriter, isDeleting ? 50 : 100);
+            }
+        }
+        
+        // Start typewriter effect
+        setTimeout(typeWriter, 1000);
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // Initial check
+        
+        // Form submission with backend integration
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                // For local development (when backend is running on your computer)
+                const backendUrl = 'http://localhost:5000';
+                
+                // For deployed backend (uncomment and update when you deploy)
+                // const backendUrl = 'https://your-backend-url.onrender.com';
+                
+                const response = await fetch(`${backendUrl}/api/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.message || 'Failed to send');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+            
+            submitBtn.innerHTML = 'Send Message';
+            submitBtn.disabled = false;
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
